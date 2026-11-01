@@ -9,7 +9,7 @@ from diploma.cli import main
 from diploma.data import load_dataset
 from diploma.evaluation import evaluate
 from diploma.models.crnn import CRNN, Alphabet, CRNNRecognizer, greedy_decode, output_length, pad_batch, to_tensor
-from diploma.training import TrainConfig, train
+from diploma.training import TrainConfig, mixed_precision, train
 
 
 def test_alphabet_roundtrip_and_extension() -> None:
@@ -101,3 +101,11 @@ def test_width_buckets_cover_every_line_once(n: int) -> None:
     assert all(len(b) <= 8 for b in batches)
     # inside a batch, lines come from one sorted pool, so they are ordered by width
     assert all(b == sorted(b, key=widths.__getitem__) for b in batches)
+
+
+@pytest.mark.parametrize(("capability", "expected"), [((8, 9), torch.bfloat16), ((7, 5), torch.float16)])
+def test_mixed_precision_avoids_emulated_bf16(monkeypatch, capability: tuple[int, int], expected: torch.dtype) -> None:
+    """RTX 4090 trains in bf16; a T4 can create bf16 tensors but has no bf16 hardware, so it gets fp16."""
+    native = capability >= (8, 0)
+    monkeypatch.setattr(torch.cuda, "is_bf16_supported", lambda including_emulation=True: native or including_emulation)
+    assert mixed_precision(torch.device("cuda"))[0] is expected

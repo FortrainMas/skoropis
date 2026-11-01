@@ -182,9 +182,8 @@ def train(config: TrainConfig) -> Path:
     scheduler = torch.optim.lr_scheduler.OneCycleLR(
         optimizer, max_lr=config.lr, total_steps=config.epochs * len(loader), pct_start=0.1
     )
-    amp_dtype = torch.bfloat16 if device.type == "cuda" and torch.cuda.is_bf16_supported() else torch.float16
-    scaler = torch.amp.GradScaler(enabled=device.type == "cuda" and amp_dtype is torch.float16)
-    ctc = nn.CTCLoss(blank=0, zero_infinity=True)
+    amp_dtype, scaler = mixed_precision(device)
+    ctc =nn.CTCLoss(blank=0, zero_infinity=True)
     recognizer = CRNNRecognizer(model, alphabet, config.max_width, device)
 
     print(f"{len(train_samples)} training lines, {alphabet.num_classes - 1} symbols, device {device}")
@@ -244,6 +243,17 @@ def validate(recognizer: Recognizer, samples: list[Sample], batch_size: int) -> 
         for norm in (Norm.EXACT, Norm.MODERN)
     )
     return {"cer": exact.cer, "wer": exact.wer, "line_accuracy": exact.line_accuracy, "cer_modern": modern.cer}
+
+
+def mixed_precision(device: torch.device) -> tuple[torch.dtype, torch.amp.GradScaler]:
+    """Autocast dtype and loss scaler: bf16 where the GPU has it in hardware (Ampere and newer), else fp16.
+
+    ``torch.cuda.is_bf16_supported()`` on its own also says yes when bf16 is only emulated
+    (T4 and other pre-Ampere cards), and emulated bf16 is several times slower than fp16 there.
+    """
+    bf16 = device.type == "cuda" and torch.cuda.is_bf16_supported(including_emulation=False)
+    scaler = torch.amp.GradScaler(enabled=device.type == "cuda" and not bf16)
+    return (torch.bfloat16 if bf16 else torch.float16), scaler
 
 
 def _from_checkpoint(path: str, texts: list[str]) -> tuple[CRNN, Alphabet]:

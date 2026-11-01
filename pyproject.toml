@@ -25,3 +25,15 @@ build-backend = "uv_build"
 dev = [
     "pytest>=9.2.0",
 ]
+
+# On Linux, torch built for CUDA 12.6: it runs with NVIDIA drivers from 525 on, while the
+# default PyPI build (CUDA 13) needs 580+, newer than many cloud GPU images ship.
+# It covers both the T4 (sm_75) and the RTX 4090 (sm_89).
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu126", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu126", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true

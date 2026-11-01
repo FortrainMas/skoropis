@@ -31,7 +31,7 @@ from transformers import VisionEncoderDecoderModel
 
 from diploma.data import Sample, load_dataset
 from diploma.models.trocr import DEFAULT_CHECKPOINT, TrOCR, _Processor
-from diploma.training import CHECKPOINTS, augment, jsonable, load_training_set, validate
+from diploma.training import CHECKPOINTS, augment, jsonable, load_training_set, mixed_precision, validate
 
 
 @dataclass
@@ -121,8 +121,7 @@ def train_trocr(config: TrOCRTrainConfig) -> Path:
     scheduler = torch.optim.lr_scheduler.LambdaLR(
         optimizer, lambda step: min((step + 1) / warmup, max(0.0, (steps - step) / max(1, steps - warmup)))
     )
-    amp_dtype = torch.bfloat16 if device.type == "cuda" and torch.cuda.is_bf16_supported() else torch.float16
-    scaler = torch.amp.GradScaler(enabled=device.type == "cuda" and amp_dtype is torch.float16)
+    amp_dtype, scaler = mixed_precision(device)
     recognizer = TrOCR.wrap(model, processor, device, num_beams=1, max_length=96)
 
     print(f"{len(train_samples)} training lines, {steps} optimizer steps, device {device}")

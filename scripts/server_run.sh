@@ -10,6 +10,7 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p logs
 export HF_HUB_DISABLE_SYMLINKS_WARNING=1
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True  # less fragmentation when memory is tight
 
 step() {
   local name=$1
@@ -45,7 +46,10 @@ nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv || exit 1
 uv run python -c "
 import torch
 assert torch.cuda.is_available(), 'torch does not see the GPU: driver too old for this CUDA build, see docs/plan.md'
-print('torch', torch.__version__, 'CUDA', torch.version.cuda, torch.cuda.get_device_name(0))
+x = torch.ones(256, 256, device='cuda', dtype=torch.float16)  # fails if this build has no kernels for the card
+assert (x @ x)[0, 0].item() == 256
+print('torch', torch.__version__, 'CUDA', torch.version.cuda, torch.cuda.get_device_name(0),
+      'bf16' if torch.cuda.is_bf16_supported(including_emulation=False) else 'fp16')
 " || exit 1
 uv run diploma data > logs/data.log || { echo "data not found: set DIPLOMA_DATA"; exit 1; }
 uv run pytest -q > logs/pytest.log 2>&1 || { echo "tests failed, see logs/pytest.log"; exit 1; }
@@ -53,14 +57,24 @@ uv run pytest -q > logs/pytest.log 2>&1 || { echo "tests failed, see logs/pytest
 # --- E004: fine-tune Kansallisarkisto on Makarov ---------------------------------
 # First, because it is the most likely best result for Makarov (see docs/plan.md).
 # Two recipes: everything at once, and the authors' own (encoder alone for the first epochs).
+#
+# Weights, gradients and optimizer state of the 610M-parameter model take ~10 GB. On a 16 GB
+# card (T4) the batch is halved and accumulated twice as long: the same 16 lines per step.
+if [ "$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1)" -lt 20000 ]; then
+  TROCR_BATCH=(--batch-size 4 --accumulate 4)
+  EVAL_BATCH=8
+else
+  TROCR_BATCH=()
+  EVAL_BATCH=16
+fi
 trocr_eval() {  # trocr_eval RUN
   uv run diploma eval diploma.models.trocr:TrOCR -a "checkpoint=checkpoints/$1/best" -a device=cuda \
-    -d makarov:test --batch-size 16 --name "$1"
+    -d makarov:test --batch-size "$EVAL_BATCH" --name "$1"
 }
-step e004-full-train uv run diploma train-trocr --name trocr-makarov --workers "$WORKERS" \
+step e004-full-train uv run diploma train-trocr --name trocr-makarov --workers "$WORKERS" "${TROCR_BATCH[@]}" \
   --train makarov:train --val makarov:val --epochs 20
 step e004-full-eval trocr_eval trocr-makarov
-step e004-encfirst-train uv run diploma train-trocr --name trocr-makarov-encfirst --workers "$WORKERS" \
+step e004-encfirst-train uv run diploma train-trocr --name trocr-makarov-encfirst --workers "$WORKERS" "${TROCR_BATCH[@]}" \
   --train makarov:train --val makarov:val --epochs 20 --freeze-decoder-epochs 6
 step e004-encfirst-eval trocr_eval trocr-makarov-encfirst
 
