@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 264" width="760" height="264" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Разбиение датасетов на train / val / test</title>
+  <rect width="760" height="264" fill="#fcfcfb"/>
+  <text x="20.0" y="34.0" font-size="14" fill="#0b0b0b" text-anchor="start" font-weight="600">Макаровка — сплит по страницам</text>
+  <clipPath id="clip-34"><rect x="20" y="46" width="720" height="26" rx="4"/></clipPath>
+  <rect x="20.0" y="46" width="437.8" height="26" fill="#2a78d6" clip-path="url(#clip-34)"/>
+  <text x="239.9" y="90.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">train</text>
+  <text x="239.9" y="106.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">807 строк · 24 стр.</text>
+  <rect x="459.8" y="46" width="104.8" height="26" fill="#eb6834" clip-path="url(#clip-34)"/>
+  <text x="513.3" y="90.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">val</text>
+  <text x="513.3" y="106.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">196 строк · 5 стр.</text>
+  <rect x="566.7" y="46" width="173.3" height="26" fill="#1baf7a" clip-path="url(#clip-34)"/>
+  <text x="653.3" y="90.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">test</text>
+  <text x="653.3" y="106.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">318 строк · 7 стр.</text>
+  <text x="20.0" y="128.0" font-size="11.5" fill="#8a8985" text-anchor="start" font-weight="400">каждая страница целиком в одной части</text>
+  <text x="20.0" y="154.0" font-size="14" fill="#0b0b0b" text-anchor="start" font-weight="600">Digital Peter — официальный сплит соревнования</text>
+  <clipPath id="clip-154"><rect x="20" y="166" width="720" height="26" rx="4"/></clipPath>
+  <rect x="20.0" y="166" width="460.1" height="26" fill="#2a78d6" clip-path="url(#clip-154)"/>
+  <text x="251.1" y="210.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">train</text>
+  <text x="251.1" y="226.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">6196 строк · 510 стр.</text>
+  <rect x="482.1" y="166" width="111.9" height="26" fill="#eb6834" clip-path="url(#clip-154)"/>
+  <text x="539.1" y="210.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">val</text>
+  <text x="539.1" y="226.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">1527 строк · 175 стр.</text>
+  <rect x="596.0" y="166" width="144.0" height="26" fill="#1baf7a" clip-path="url(#clip-154)"/>
+  <text x="668.0" y="210.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">test</text>
+  <text x="668.0" y="226.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">1930 строк · 199 стр.</text>
+  <text x="20.0" y="248.0" font-size="11.5" fill="#8a8985" text-anchor="start" font-weight="400">сплит построчный: страницы встречаются в разных частях</text>
+</svg>

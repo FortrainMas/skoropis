@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>CER по уровням нормализации</title>
+  <rect width="760" height="380" fill="#fcfcfb"/>
+  <text x="56.0" y="22.0" font-size="14" fill="#0b0b0b" text-anchor="start" font-weight="600">CER при разных нормализациях, 95% доверительный интервал</text>
+  <rect x="56.0" y="37.0" width="10" height="10" rx="2" fill="#2a78d6"/>
+  <text x="72.0" y="46.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="400">Макаровка, test</text>
+  <rect x="181.0" y="37.0" width="10" height="10" rx="2" fill="#eb6834"/>
+  <text x="197.0" y="46.0" font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="400">Digital Peter, test (выборка 300)</text>
+  <line x1="56" x2="744" y1="316.0" y2="316.0" stroke="#e8e7e3"/>
+  <text x="48.0" y="320.0" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">0%</text>
+  <line x1="56" x2="744" y1="279.7" y2="279.7" stroke="#e8e7e3"/>
+  <text x="48.0" y="283.7" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">10%</text>
+  <line x1="56" x2="744" y1="243.4" y2="243.4" stroke="#e8e7e3"/>
+  <text x="48.0" y="247.4" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">20%</text>
+  <line x1="56" x2="744" y1="207.1" y2="207.1" stroke="#e8e7e3"/>
+  <text x="48.0" y="211.1" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">30%</text>
+  <line x1="56" x2="744" y1="170.9" y2="170.9" stroke="#e8e7e3"/>
+  <text x="48.0" y="174.9" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">40%</text>
+  <line x1="56" x2="744" y1="134.6" y2="134.6" stroke="#e8e7e3"/>
+  <text x="48.0" y="138.6" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">50%</text>
+  <line x1="56" x2="744" y1="98.3" y2="98.3" stroke="#e8e7e3"/>
+  <text x="48.0" y="102.3" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">60%</text>
+  <line x1="56" x2="744" y1="62.0" y2="62.0" stroke="#e8e7e3"/>
+  <text x="48.0" y="66.0" font-size="11" fill="#8a8985" text-anchor="end" font-weight="400">70%</text>
+  <path d="M97.0,316.0 V249.3 Q97.0,245.3 101.0,245.3 H137.0 Q141.0,245.3 141.0,249.3 V316.0 Z" fill="#2a78d6"/>
+  <path d="M114.0,236.9 H124.0 M119.0,236.9 V255.2 M114.0,255.2 H124.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="119.0" y="230.9" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">19.5</text>
+  <path d="M143.0,316.0 V87.9 Q143.0,83.9 147.0,83.9 H183.0 Q187.0,83.9 187.0,87.9 V316.0 Z" fill="#eb6834"/>
+  <path d="M160.0,76.4 H170.0 M165.0,76.4 V90.1 M160.0,90.1 H170.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="165.0" y="70.4" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">64.0</text>
+  <text x="142.0" y="338.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">exact</text>
+  <text x="142.0" y="354.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">как есть</text>
+  <path d="M269.0,316.0 V251.9 Q269.0,247.9 273.0,247.9 H309.0 Q313.0,247.9 313.0,251.9 V316.0 Z" fill="#2a78d6"/>
+  <path d="M286.0,239.4 H296.0 M291.0,239.4 V257.9 M286.0,257.9 H296.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="291.0" y="233.4" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">18.8</text>
+  <path d="M315.0,316.0 V90.6 Q315.0,86.6 319.0,86.6 H355.0 Q359.0,86.6 359.0,90.6 V316.0 Z" fill="#eb6834"/>
+  <path d="M332.0,79.2 H342.0 M337.0,79.2 V92.8 M332.0,92.8 H342.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="337.0" y="73.2" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">63.2</text>
+  <text x="314.0" y="338.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">caseless</text>
+  <text x="314.0" y="354.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">без регистра</text>
+  <path d="M441.0,316.0 V254.5 Q441.0,250.5 445.0,250.5 H481.0 Q485.0,250.5 485.0,254.5 V316.0 Z" fill="#2a78d6"/>
+  <path d="M458.0,242.6 H468.0 M463.0,242.6 V260.2 M458.0,260.2 H468.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="463.0" y="236.6" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">18.0</text>
+  <path d="M487.0,316.0 V93.2 Q487.0,89.2 491.0,89.2 H527.0 Q531.0,89.2 531.0,93.2 V316.0 Z" fill="#eb6834"/>
+  <path d="M504.0,82.0 H514.0 M509.0,82.0 V95.4 M504.0,95.4 H514.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="509.0" y="76.0" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">62.5</text>
+  <text x="486.0" y="338.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">letters</text>
+  <text x="486.0" y="354.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">без пунктуации</text>
+  <path d="M613.0,316.0 V263.2 Q613.0,259.2 617.0,259.2 H653.0 Q657.0,259.2 657.0,263.2 V316.0 Z" fill="#2a78d6"/>
+  <path d="M630.0,250.8 H640.0 M635.0,250.8 V269.3 M630.0,269.3 H640.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="635.0" y="244.8" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">15.7</text>
+  <path d="M659.0,316.0 V97.4 Q659.0,93.4 663.0,93.4 H699.0 Q703.0,93.4 703.0,97.4 V316.0 Z" fill="#eb6834"/>
+  <path d="M676.0,85.9 H686.0 M681.0,85.9 V99.6 M676.0,99.6 H686.0" stroke="#0b0b0b" stroke-width="1.25" fill="none"/>
+  <text x="681.0" y="79.9" font-size="11.5" fill="#0b0b0b" text-anchor="middle" font-weight="400">61.3</text>
+  <text x="658.0" y="338.0" font-size="12" fill="#0b0b0b" text-anchor="middle" font-weight="600">modern</text>
+  <text x="658.0" y="354.0" font-size="11.5" fill="#52514e" text-anchor="middle" font-weight="400">совр. орфография</text>
+</svg>

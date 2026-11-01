@@ -1,0 +1,348 @@
+{
+  "run": "kansallisarkisto-zeroshot",
+  "model": "diploma.models.trocr:TrOCR",
+  "model_args": {},
+  "model_info": {
+    "checkpoint": "Kansallisarkisto/cyrillic-large-handwritten",
+    "revision": "5c56397bde13f550d2ac07a7c7da61c247c17a79",
+    "parameters": 610553010,
+    "encoder": "dinov2",
+    "decoder": "roberta",
+    "generation": {
+      "num_beams": 4,
+      "max_length": 128,
+      "no_repeat_ngram_size": 3,
+      "length_penalty": 2,
+      "do_sample": false
+    }
+  },
+  "dataset": "peter:test",
+  "sample": 300,
+  "seed": 0,
+  "limit": null,
+  "batch_size": 4,
+  "created": "2026-11-01T15:13:54",
+  "environment": {
+    "python": "3.12.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD",
+    "packages": {
+      "torch": "2.14.1",
+      "transformers": "5.22.1"
+    },
+    "git_commit": null,
+    "git_dirty": null
+  },
+  "lines": 300,
+  "groups": 143,
+  "metrics": {
+    "exact": {
+      "cer": 0.6395835978164276,
+      "wer": 1.0006548788474132,
+      "line_accuracy": 0.03333333333333333,
+      "ci95": {
+        "cer": [
+          0.6226883455380414,
+          0.6602789569436022
+        ],
+        "wer": [
+          0.9825620389000671,
+          1.0214830214830215
+        ],
+        "line_accuracy": [
+          0.013422818791946308,
+          0.056856187290969896
+        ]
+      },
+      "chars": {
+        "ref_len": 7877,
+        "substitutions": 3179,
+        "deletions": 1596,
+        "insertions": 263
+      },
+      "words": {
+        "ref_len": 1527,
+        "substitutions": 1049,
+        "deletions": 405,
+        "insertions": 74
+      }
+    },
+    "caseless": {
+      "cer": 0.6322203884727688,
+      "wer": 0.9967256057629339,
+      "line_accuracy": 0.043333333333333335,
+      "ci95": {
+        "cer": [
+          0.6151534126487164,
+          0.6526271893244371
+        ],
+        "wer": [
+          0.9785522788203753,
+          1.0183798502382573
+        ],
+        "line_accuracy": [
+          0.01935483870967742,
+          0.06930693069306931
+        ]
+      },
+      "chars": {
+        "ref_len": 7877,
+        "substitutions": 3115,
+        "deletions": 1599,
+        "insertions": 266
+      },
+      "words": {
+        "ref_len": 1527,
+        "substitutions": 1043,
+        "deletions": 405,
+        "insertions": 74
+      }
+    },
+    "letters": {
+      "cer": 0.62515931684935,
+      "wer": 0.9835526315789473,
+      "line_accuracy": 0.05,
+      "ci95": {
+        "cer": [
+          0.608016133098059,
+          0.6449554538887551
+        ],
+        "wer": [
+          0.962059620596206,
+          1.0057512580877066
+        ],
+        "line_accuracy": [
+          0.02572347266881029,
+          0.0781758957654723
+        ]
+      },
+      "chars": {
+        "ref_len": 7846,
+        "substitutions": 3055,
+        "deletions": 1625,
+        "insertions": 225
+      },
+      "words": {
+        "ref_len": 1520,
+        "substitutions": 1027,
+        "deletions": 392,
+        "insertions": 76
+      }
+    },
+    "modern": {
+      "cer": 0.6133418858242463,
+      "wer": 0.9776315789473684,
+      "line_accuracy": 0.05,
+      "ci95": {
+        "cer": [
+          0.5964787056864145,
+          0.6341583548824037
+        ],
+        "wer": [
+          0.9559620596205962,
+          1.0
+        ],
+        "line_accuracy": [
+          0.02572347266881029,
+          0.0781758957654723
+        ]
+      },
+      "chars": {
+        "ref_len": 7795,
+        "substitutions": 2870,
+        "deletions": 1702,
+        "insertions": 209
+      },
+      "words": {
+        "ref_len": 1520,
+        "substitutions": 1018,
+        "deletions": 392,
+        "insertions": 76
+      }
+    }
+  },
+  "confusions": [
+    {
+      "ref": " ",
+      "hyp": "",
+      "count": 276
+    },
+    {
+      "ref": "т",
+      "hyp": "",
+      "count": 100
+    },
+    {
+      "ref": "а",
+      "hyp": "",
+      "count": 96
+    },
+    {
+      "ref": "е",
+      "hyp": "",
+      "count": 78
+    },
+    {
+      "ref": "о",
+      "hyp": "",
+      "count": 76
+    },
+    {
+      "ref": "и",
+      "hyp": "",
+      "count": 72
+    },
+    {
+      "ref": "i",
+      "hyp": "",
+      "count": 70
+    },
+    {
+      "ref": "с",
+      "hyp": "",
+      "count": 66
+    },
+    {
+      "ref": "л",
+      "hyp": "",
+      "count": 65
+    },
+    {
+      "ref": "н",
+      "hyp": "",
+      "count": 61
+    },
+    {
+      "ref": "м",
+      "hyp": "",
+      "count": 59
+    },
+    {
+      "ref": "к",
+      "hyp": "",
+      "count": 56
+    },
+    {
+      "ref": "в",
+      "hyp": "",
+      "count": 52
+    },
+    {
+      "ref": "у",
+      "hyp": "",
+      "count": 50
+    },
+    {
+      "ref": "д",
+      "hyp": "",
+      "count": 45
+    },
+    {
+      "ref": "п",
+      "hyp": "",
+      "count": 44
+    },
+    {
+      "ref": "ѣ",
+      "hyp": "",
+      "count": 40
+    },
+    {
+      "ref": "р",
+      "hyp": "",
+      "count": 36
+    },
+    {
+      "ref": "",
+      "hyp": " ",
+      "count": 35
+    },
+    {
+      "ref": "б",
+      "hyp": "",
+      "count": 30
+    },
+    {
+      "ref": "м",
+      "hyp": "н",
+      "count": 28
+    },
+    {
+      "ref": "и",
+      "hyp": "а",
+      "count": 28
+    },
+    {
+      "ref": "ѣ",
+      "hyp": "е",
+      "count": 28
+    },
+    {
+      "ref": "п",
+      "hyp": "р",
+      "count": 27
+    },
+    {
+      "ref": "а",
+      "hyp": "о",
+      "count": 27
+    },
+    {
+      "ref": " ",
+      "hyp": "о",
+      "count": 26
+    },
+    {
+      "ref": "а",
+      "hyp": "и",
+      "count": 25
+    },
+    {
+      "ref": " ",
+      "hyp": "и",
+      "count": 24
+    },
+    {
+      "ref": "з",
+      "hyp": "",
+      "count": 24
+    },
+    {
+      "ref": "п",
+      "hyp": "П",
+      "count": 24
+    }
+  ],
+  "coverage": [
+    {
+      "coverage": 0.1,
+      "lines": 30,
+      "min_confidence": 0.9444642066955566,
+      "cer": 0.5210084033613446,
+      "line_accuracy": 0.3333333333333333
+    },
+    {
+      "coverage": 0.2,
+      "lines": 60,
+      "min_confidence": 0.8795794248580933,
+      "cer": 0.6081081081081081,
+      "line_accuracy": 0.16666666666666666
+    },
+    {
+      "coverage": 0.5,
+      "lines": 150,
+      "min_confidence": 0.7570919990539551,
+      "cer": 0.6249588409614751,
+      "line_accuracy": 0.06666666666666667
+    },
+    {
+      "coverage": 1.0,
+      "lines": 300,
+      "min_confidence": 0.40287479758262634,
+      "cer": 0.6395835978164276,
+      "line_accuracy": 0.03333333333333333
+    }
+  ],
+  "seconds": 2585.1233265001792,
+  "lines_per_second": 0.11604862210042001
+}
